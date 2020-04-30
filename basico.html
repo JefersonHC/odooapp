@@ -34,7 +34,7 @@
         </ion-button>
     </ion-col>
     <ion-col size-md="2" offset-md="4">
-        <ion-button @click="cancelar" color="danger" id="b_cancelar">
+        <ion-button @click="cancelar" color="danger">
             <ion-icon name="close-outline"></ion-icon>
             Cancelar
         </ion-button>
@@ -48,9 +48,6 @@
 <script>
     function regresar(){
         $("#contenedorPrincipal").load("default.html");
-    }
-    document.querySelector('#b_cancelar').onclick=()=>{
-        regresar();
     }
 
     function cancelar(){
