@@ -40,12 +40,19 @@
         </ion-button>
     </ion-col>
 </ion-row>
-<ion-card>
-        <ion-button expand="block" color="light" id="btnRegresarSoporte">Regresar</ion-button>
-</ion-card>
+<ion-button expand="block" color="warning" id="btnRegresarSoporte">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+    Regresar</ion-button>
+<!--
+    <ion-buttons slot="start">
+    <ion-button>
+        <ion-icon name="logo-ionic"></ion-icon>
+    </ion-button>
+</ion-buttons>
+-->
 
 <script>
-document.querySelector('#btnRegresarSoporte').onclick=()=>{
-            $("#contenedorPrincipal").load("default.html");
-        }
+    document.querySelector('#btnRegresarSoporte').onclick = () => {
+        $("#contenedorPrincipal").load("default.html");
+    }
 </script>
