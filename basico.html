@@ -40,12 +40,15 @@
         </ion-button>
     </ion-col>
 </ion-row>
-<ion-button expand="block" color="warning" id="btnRegresarSoporte">
+<ion-button @click="regresar" expand="block" color="warning" id="btnRegresarSoporte">
     <ion-icon name="arrow-back-outline"></ion-icon>
     Regresar
 </ion-button>
 
 <script>
+    function regresar(){
+        $("#contenedorPrincipal").load("default.html");
+    }
     document.querySelector('#btnRegresarSoporte').onclick = () => {
         $("#contenedorPrincipal").load("default.html");
     }
