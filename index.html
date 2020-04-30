@@ -9,10 +9,9 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
-   <link rel="stylesheet" href="https://node-web.odoo.com/im_livechat/external_lib.css" />
+    <link rel="stylesheet" href="https://node-web.odoo.com/im_livechat/external_lib.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
@@ -28,8 +27,8 @@
                 <ion-buttons slot="end">
                     <ion-button id="btnHelp">
                         <ion-icon name="help-circle-outline"></ion-icon>
-                                </ion-button>
-                   <!--
+                    </ion-button>
+                    <!--
                         <ion-button id="btnHelp">
                         <ion-icon name="help-circle-outline"></ion-icon>
                                 </ion-button>
@@ -37,31 +36,32 @@
                 </ion-buttons>
             </ion-toolbar>
         </ion-header>
-  
-   
+
+
         <!--t-->
         <ion-content>
             <ion-grid>
                 <ion-row>
                     <ion-col size-md="4" offset-md="4">
                         <ion-card>
-                            <ion-card-content  id="contenedorPrincipal">
-                                
+                            <ion-card-content id="contenedorPrincipal">
+
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
                 </ion-row>
 
             </ion-grid>
-                </ion-content>
-   
+        </ion-content>
+
         <!--.T-->
 
     </ion-app>
 
     <script>
-         $("#contenedorPrincipal").load("default.html");
-         function helpme(){
+        $("#contenedorPrincipal").load("default.html");
+
+        function helpme() {
             let alert = document.createElement('ion-modal');
             alert.header = 'Mensaje';
 
@@ -69,43 +69,31 @@
             alert.buttons = ['Cancelar', 'Aceptar'];
             document.body.appendChild(alert);
             return alert.present();
-         }
-         const btnHelp = document.querySelector('#btnHelp');
+        }
+
+        const btnHelp = document.querySelector('#btnHelp');
         btnHelp.onclick = () => {
             window.location = "ayuda.html";
         }
-/*
-
-
-        const ayuda = () => {
-            let alert = document.createElement('ion-modal');
-            alert.header = 'Mensaje';
-
-            alert.message = 'Tu mensaje se ha enviado correctamente';
-            alert.buttons = ['Cancelar', 'Aceptar'];
-            document.body.appendChild(alert);
-            return alert.present();
-        }*/
-
     </script>
     <script>
-        function cancelar(){
+      /*  function cancelar() {
             console.log('prueba');
-        document.querySelector('#nombre').value = '';
-        document.querySelector('#correo').value = '';
-        document.querySelector('#mensaje').value = '';
-        document.querySelector('#asunto').value = '';
-    }
+            document.querySelector('#nombre').value = '';
+            document.querySelector('#correo').value = '';
+            document.querySelector('#mensaje').value = '';
+            document.querySelector('#asunto').value = '';
+        }*/
     </script>
 
 
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js">
-</script>
-<script src="https://cdn.emailjs.com/dist/email.min.js" type="text/javascript">
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js">
+    </script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js" type="text/javascript">
+    </script>
 
 </body>
 
