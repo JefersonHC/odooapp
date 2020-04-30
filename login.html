@@ -16,7 +16,7 @@
 <body>
     <ion-app>
         <ion-header>
-            <ion-toolbar color="primary">
+            <ion-toolbar color="secondary">
                 <ion-buttons slot="start">
                     <ion-button>
                         <ion-icon name="logo-ionic"></ion-icon>
@@ -37,7 +37,7 @@
                 <ion-row>
                     <ion-col size-md="4" offset-md="4">
                         <ion-card>
-                            <ion-card-header color="medium">
+                            <ion-card-header color="secondary">
                                 <ion-card-title>
                                     Login
                                 </ion-card-title>
@@ -54,14 +54,14 @@
                                     <ion-label position="floating">
                                         Clave
                                     </ion-label>
-                                    <ion-input class="" v-model="from_name" id="asunto">
+                                    <ion-input class="" v-model="from_name" id="clave">
                                     </ion-input>
                                 </ion-item>
                                 <ion-grid>
                                     <ion-row>
                                         <ion-col>
                                             <div class="ion-text-center">
-                                                <ion-button id="btnIngresar">
+                                                <ion-button id="btnIngresar" color="secondary">
                                                     <ion-icon name="send-outline"></ion-icon>
                                                     Ingresar
                                                 </ion-button>
@@ -91,7 +91,37 @@
             window.location = "ayuda.html";
         }
         btnIngresar.onclick = () => {
+            let nombre_usuario = document.querySelector('#nombre').value;
+            let clave_usuario = document.querySelector('#clave').value;
+            user = JSON.parse(sessionStorage.getItem(nombre_usuario));
+            if (user.clave == clave_usuario){
+                console.log('entro biel');
+                window.location = "index.html";
+                limpiar_login();
+            }else{
+                console.log('mal');
+            }
+
+            console.log(nombre_usuario);
+            console.log(user);
         }
+
+        function limpiar_login(){
+            document.querySelector('#nombre').value ='';
+            document.querySelector('#clave').value='';
+        }
+
+    </script>
+    <script>
+
+        var ferreteriala14 = {
+            usuario :'ferreteriasferreterias@outlook.es',
+            clave : 'claveodoo'
+        }
+      
+        sessionStorage.setItem("ferreteriala14", JSON.stringify(ferreteriala14));
+        //sessionStorage.setItem("usuario1", JSON.stringify(usuario2));
+       // user = JSON.parse(sessionStorage.getItem("usuario"));
     </script>
 </body>
 
