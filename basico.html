@@ -34,7 +34,7 @@
         </ion-button>
     </ion-col>
     <ion-col size-md="2" offset-md="4">
-        <ion-button @click="cancelar" id="cancelar" color="danger">
+        <ion-button id="btn_cancelar" color="danger">
             <ion-icon name="close-outline"></ion-icon>
             Cancelar
         </ion-button>
@@ -42,17 +42,20 @@
 </ion-row>
 <ion-button expand="block" color="warning" id="btnRegresarSoporte">
     <ion-icon name="arrow-back-outline"></ion-icon>
-    Regresar</ion-button>
-<!--
-    <ion-buttons slot="start">
-    <ion-button>
-        <ion-icon name="logo-ionic"></ion-icon>
-    </ion-button>
-</ion-buttons>
--->
+    Regresar
+</ion-button>
 
 <script>
     document.querySelector('#btnRegresarSoporte').onclick = () => {
         $("#contenedorPrincipal").load("default.html");
+    }
+    const cancelar = () => {
+        document.querySelector('#nombre').value = '';
+        document.querySelector('#correo').value = '';
+        document.querySelector('#mensaje').value = '';
+        document.querySelector('#asunto').value = '';
+    }
+    document.querySelector('#btn_cancelar').onclick = () => {
+        cancelar();
     }
 </script>
