@@ -39,8 +39,7 @@
                     <ion-col size-md="4" offset-md="4">
                         <ion-card>
                             <ion-card-content  id="contenedorPrincipal">
-                                <ion-button expand="block" color="light" id="btnSoporteBasico">Soporte</ion-button>
-                                <ion-button expand="block" color="light">Especializado</ion-button>
+                                
                             </ion-card-content>
                         </ion-card>
                     </ion-col>
@@ -60,6 +59,7 @@
     </script>
    <!-- <script src="static/js/app.js"></script>-->
     <script>
+         $("#contenedorPrincipal").load("default.html");
         const btnHelp = document.querySelector('#btnHelp');
 
         btnHelp.onclick = () => {
@@ -82,14 +82,7 @@
             $("#contenedorPrincipal").load("perfil.html");
         }*/
     </script>
-    <script>
 
-        document.querySelector('#btnSoporteBasico').onclick=()=>{
-            $("#contenedorPrincipal").load("basico.html");
-            console.log('23');
-        }
-     
-    </script>
 
 </body>
 

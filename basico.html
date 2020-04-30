@@ -40,3 +40,12 @@
         </ion-button>
     </ion-col>
 </ion-row>
+<ion-card>
+        <ion-button expand="block" color="light" id="btnRegresarSoporte">Regresar</ion-button>
+</ion-card>
+
+<script>
+document.querySelector('#btnRegresarSoporte').onclick=()=>{
+            $("#contenedorPrincipal").load("default.html");
+        }
+</script>
