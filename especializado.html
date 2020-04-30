@@ -96,7 +96,7 @@ const vue = new Vue({
 				subject: document.querySelector('#asunto').value,
 			};
 
-			emailjs.send("gmail", "ferreterias", data)
+			emailjs.send("gmail", "ferreteria_es", data)
 				.then(function (response) {
 					if (response.text === 'OK') {
 						mensajeEnviado();
