@@ -34,28 +34,35 @@
         </ion-button>
     </ion-col>
     <ion-col size-md="2" offset-md="4">
-        <ion-button @click="cancelar" color="danger">
+        <ion-button color="danger" id="btn_cancelar">
             <ion-icon name="close-outline"></ion-icon>
             Cancelar
         </ion-button>
     </ion-col>
 </ion-row>
-<ion-button @click="regresar" expand="block" color="warning" id="btnRegresarSoporte">
+<ion-button expand="block" color="warning" id="btnRegresarSoporte">
     <ion-icon name="arrow-back-outline"></ion-icon>
     Regresar
 </ion-button>
 
 <script>
-       function regresar(){
+       document.querySelector('#btn_cancelar').onclick=()=>{
+        cancelar();
+    }
+
+    document.querySelector('#btnRegresarSoporte').onclick=()=>{
+        regresar();
+    }
+    function regresar(){
         $("#contenedorPrincipal").load("default.html");
     }
-    const cancelar = () => {
+
+    function cancelar(){
         document.querySelector('#nombre').value = '';
         document.querySelector('#correo').value = '';
         document.querySelector('#mensaje').value = '';
         document.querySelector('#asunto').value = '';
     }
-
 </script>
 
 <script>
