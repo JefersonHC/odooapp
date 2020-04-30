@@ -24,7 +24,8 @@
                 </ion-buttons>
                 <ion-title>Node Web - Soporte</ion-title>
                 <ion-buttons slot="end">
-                    <ion-button>
+                    <ion-button id="btnHelp">
+                        <ion-icon name="help-circle-outline"></ion-icon>
                         <!--<p>Total <spam id="precioTotal"></spam>$</p>
                         <ion-icon name="cart"></ion-icon>-->
                     </ion-button>
@@ -67,7 +68,8 @@
                                     <ion-label position="floating">
                                         Mensaje
                                     </ion-label>
-                                    <ion-textarea class="" placeholder="Detallanos tu solicitud de ayuda aqui..." v-model="from_name" id="mensaje">
+                                    <ion-textarea class="" placeholder="Detallanos tu solicitud de ayuda aqui..."
+                                        v-model="from_name" id="mensaje">
                                     </ion-textarea>
                                 </ion-item>
                                 <ion-row>
@@ -102,7 +104,87 @@
     <script src="https://cdn.emailjs.com/dist/email.min.js" type="text/javascript">
     </script>
     <script src="static/js/app.js"></script>
+    <script>
+        const btnHelp = document.querySelector('#btnHelp');
 
+        btnHelp.onclick = () => {
+            /*
+            console.log('boton hel i');
+            presentModal();
+            modalElement();
+            */
+            window.location = "ayuda.html";
+        }
+
+
+        customElements.define('modal-page', class extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = `
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ayuda</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button onClick="dismissModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+    <ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+    <ion-card-title>Card Title</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    Keep close to Nature's heart... and break clear away, once in awhile,
+    and climb a mountain or spend a week in the woods. Wash your spirit clean.
+  </ion-card-content>
+</ion-card>
+</ion-content>`;
+  }
+});
+
+
+const modalElement = document.createElement('ion-modal');
+modalElement.component = 'modal-page';
+modalElement.componentProps = {
+  'firstName': 'Douglas',
+  'lastName': 'Adams',
+  'middleInitial': 'N'
+};
+
+
+function dismissModal(){
+    console.log('l')
+    window.location = "main.html";
+}
+
+function presentModal() {
+  // create the modal with the `modal-page` component
+  const modalElement = document.createElement('ion-modal');
+  modalElement.component = 'modal-page';
+
+  // present the modal
+  document.body.appendChild(modalElement);
+  return modalElement.present();
+}
+
+        const ayuda = () => {
+	let alert = document.createElement('ion-modal');
+	alert.header = 'Mensaje';
+
+	alert.message = 'Tu mensaje se ha enviado correctamente';
+	alert.buttons = ['Cancelar', 'Aceptar'];
+	document.body.appendChild(alert);
+	return alert.present();
+}
+
+
+
+
+    </script>
 </body>
 
 </html>
