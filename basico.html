@@ -50,7 +50,7 @@
         $("#contenedorPrincipal").load("default.html");
     }
 
-    const cancelar = () => {
+    function cancelar(){
         document.querySelector('#nombre').value = '';
         document.querySelector('#correo').value = '';
         document.querySelector('#mensaje').value = '';
@@ -60,7 +60,7 @@
 </script>
 
 <script>
-    const mensajeEnviado = () => {
+    function mensajeEnviado(){
         let alert = document.createElement('ion-alert');
         alert.header = 'Mensaje';
 
