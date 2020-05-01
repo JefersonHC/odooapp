@@ -28,94 +28,86 @@
 </ion-item>
 <ion-row>
     <ion-col size-md="2" offset-md="0">
-        <ion-button @click="enviar" color="secondary">
+        <ion-button @click="enviar">
             <ion-icon name="send-outline"></ion-icon>
             Enviar
         </ion-button>
     </ion-col>
     <ion-col size-md="2" offset-md="4">
-        <ion-button color="danger" id="btn_cancelar">
+        <ion-button @click="clearinputs" color="danger" id="btn_cancelar">
             <ion-icon name="close-outline"></ion-icon>
             Cancelar
         </ion-button>
     </ion-col>
 </ion-row>
-<ion-button expand="block" color="warning" id="btnRegresarSoporte">
+
+<ion-button @click="gotoback" expand="block" color="warning" id="btnRegresarSoporte">
     <ion-icon name="arrow-back-outline"></ion-icon>
     Regresar
 </ion-button>
-<!--
-
 <script>
-       document.querySelector('#btn_cancelar').onclick=()=>{
-        cancelar();
-    }
 
-    document.querySelector('#btnRegresarSoporte').onclick=()=>{
-        regresar();
-    }
-    function regresar(){
+    function gotoback() {
         $("#contenedorPrincipal").load("default.html");
     }
-
-    function cancelar(){
+    function clearinputs() {
         document.querySelector('#nombre').value = '';
         document.querySelector('#correo').value = '';
         document.querySelector('#mensaje').value = '';
         document.querySelector('#asunto').value = '';
     }
+
 </script>
+
 
 <script>
-    function mensajeEnviado(){
-        let alert = document.createElement('ion-alert');
-        alert.header = 'Mensaje';
 
-        alert.message = 'Tu mensaje se ha enviado correctamente';
-        alert.buttons = ['Cancelar', 'Aceptar'];
-        document.body.appendChild(alert);
-        return alert.present();
-    }
+    (function () {
+        emailjs.init("user_OluHtyj4jecIJxFVjMrca");
+    })();
+    vue = new Vue({
+        el: '#contenedorPrincipal',
+        data() {
+            return {
+                from_name: '',
+                from_email: '',
+                message: '',
+                subject: '',
+            }
+        },
+        methods: {
+            enviar() {
+                let data = {
+                    from_name: document.querySelector('#nombre').value,
+                    from_email: document.querySelector('#correo').value,
+                    message: document.querySelector('#mensaje').value,
+                    subject: document.querySelector('#asunto').value,
+                };
 
+                emailjs.send("gmail", "espec", data)
+                    .then(function (response) {
+                        if (response.text === 'OK') {
+                            let alert = document.createElement('ion-alert');
+                            alert.header = 'Mensaje';
+
+                            alert.message = 'Tu mensaje se ha enviado correctamente';
+                            alert.buttons = ['Cancelar', 'Aceptar'];
+                            document.body.appendChild(alert);
+                            return alert.present();
+                        }
+                        console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
+                    }, function (err) {
+                        let alert = document.createElement('ion-alert');
+                        alert.header = 'Mensaje';
+                        alert.message = 'Tu mensaje no ha enviado';
+                        alert.buttons = ['Cancelar', 'Aceptar'];
+                        document.body.appendChild(alert);
+
+                        console.log("FAILED. error=", err);
+                        return alert.present();
+
+                    });
+            }
+        }
+    });
 </script>
-<script>
-
-(function () {
-	emailjs.init("user_b3l3NHJjsJ5Fw2dCVNvne");
-})();
-
-const vue = new Vue({
-	el: '#contenedorPrincipal',
-	data() {
-		return {
-			from_name: '',
-			from_email: '',
-			message: '',
-			subject: '',
-		}
-	},
-	methods: {
-		enviar() {
-			let data = {
-				from_name: document.querySelector('#nombre').value,
-				from_email: document.querySelector('#correo').value,
-				message: document.querySelector('#mensaje').value,
-				subject: document.querySelector('#asunto').value,
-			};
-
-			emailjs.send("gmail", "ferreteria_es", data)
-				.then(function (response) {
-					if (response.text === 'OK') {
-						mensajeEnviado();
-					}
-					console.log("SUCCESS. status=%d, text=%s", response.status, response.text);
-				}, function (err) {
-					alert('Ocurrió un problema al enviar el correo');
-					console.log("FAILED. error=", err);
-				});
-		}
-	}
-});
-
-</script>
--->

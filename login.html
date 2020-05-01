@@ -1,128 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Node Web</title>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
-    <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
-    <link rel="stylesheet" href="https://node-web.odoo.com/im_livechat/external_lib.css" />
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
-<body>
-    <ion-app>
-        <ion-header>
-            <ion-toolbar color="secondary">
-                <ion-buttons slot="start">
-                    <ion-button>
-                        <ion-icon name="logo-ionic"></ion-icon>
+<ion-card-content id="app">
+    <ion-item class="ion-margin-vertical">
+        <ion-label position="floating">
+            Usuario
+        </ion-label>
+        <ion-input class="" v-model="from_name" id="nombre">
+        </ion-input>
+    </ion-item>
+    <ion-item class="ion-margin-vertical">
+        <ion-label position="floating">
+            Clave
+        </ion-label>
+        <ion-input class="" v-model="from_name" id="clave">
+        </ion-input>
+    </ion-item>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <div class="ion-text-center">
+                    <ion-button id="btnIngresar" color="secondary">
+                        <ion-icon name="send-outline"></ion-icon>
+                        Ingresar
                     </ion-button>
-                </ion-buttons>
-                <ion-title>Bienvenidos</ion-title>
-                <ion-buttons slot="end">
-                    <ion-button id="btnHelp">
-                        <ion-icon name="help-circle-outline"></ion-icon>
-                        <!--<p>Total <spam id="precioTotal"></spam>$</p>
-                        <ion-icon name="cart"></ion-icon>-->
-                    </ion-button>
-                </ion-buttons>
-            </ion-toolbar>
-        </ion-header>
-        <ion-content>
-            <ion-grid>
-                <ion-row>
-                    <ion-col size-md="4" offset-md="4">
-                        <ion-card>
-                            <ion-card-header color="secondary">
-                                <ion-card-title>
-                                    Login
-                                </ion-card-title>
-                            </ion-card-header>
-                            <ion-card-content id="app">
-                                <ion-item class="ion-margin-vertical">
-                                    <ion-label position="floating">
-                                        Usuario
-                                    </ion-label>
-                                    <ion-input class="" v-model="from_name" id="nombre">
-                                    </ion-input>
-                                </ion-item>
-                                <ion-item class="ion-margin-vertical">
-                                    <ion-label position="floating">
-                                        Clave
-                                    </ion-label>
-                                    <ion-input class="" v-model="from_name" id="clave">
-                                    </ion-input>
-                                </ion-item>
-                                <ion-grid>
-                                    <ion-row>
-                                        <ion-col>
-                                            <div class="ion-text-center">
-                                                <ion-button id="btnIngresar" color="secondary">
-                                                    <ion-icon name="send-outline"></ion-icon>
-                                                    Ingresar
-                                                </ion-button>
-                                            </div>
-                                        </ion-col>
-                                    </ion-row>
-                                </ion-grid>
-                            </ion-card-content>
-                        </ion-card>
-                    </ion-col>
-                </ion-row>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
-            </ion-grid>
-
-        </ion-content>
-    </ion-app>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js">
-    </script>
-    <script src="https://cdn.emailjs.com/dist/email.min.js" type="text/javascript">
-    </script>
-    <script src="static/js/app.js"></script>
     <script>
-        const btnHelp = document.querySelector('#btnHelp');
-        const btnIngresar = document.querySelector('#btnIngresar');
-        btnHelp.onclick = () => {
-            window.location = "ayuda.html";
-        }
+        // const btnHelp = document.querySelector('#btnHelp');
+        // const btnIngresar = document.querySelector('#btnIngresar');
+        //   btnHelp.onclick = () => {
+        //     window.location = "ayuda.html";
+        //}
         btnIngresar.onclick = () => {
             let nombre_usuario = document.querySelector('#nombre').value;
             let clave_usuario = document.querySelector('#clave').value;
             user = JSON.parse(sessionStorage.getItem(nombre_usuario));
-            if (user.clave == clave_usuario){
-                console.log('entro biel');
-                window.location = "index.html";
-                limpiar_login();
-            }else{
-                console.log('mal');
+            if (user == null) {
+                let alert = document.createElement('ion-alert');
+                alert.header = 'Login';
+                alert.message = 'Usuario o clave incorrecto';
+                alert.buttons = ['Cancelar', 'Aceptar'];
+                document.body.appendChild(alert);
+
+                return alert.present();
+            } else {
+                if (user.clave == clave_usuario) {
+                    console.log('entro biel');
+                    $("#contenedorPrincipal").load("default.html");
+                    limpiar_login();
+                } else {
+                    let alert = document.createElement('ion-alert');
+                    alert.header = 'Login';
+                    alert.message = 'Usuario o clave incorrecto';
+                    alert.buttons = ['Cancelar', 'Aceptar'];
+                    document.body.appendChild(alert);
+
+                    return alert.present();
+                }
             }
+
 
             console.log(nombre_usuario);
             console.log(user);
         }
 
-        function limpiar_login(){
-            document.querySelector('#nombre').value ='';
-            document.querySelector('#clave').value='';
+        function limpiar_login() {
+            document.querySelector('#nombre').value = '';
+            document.querySelector('#clave').value = '';
         }
 
     </script>
     <script>
 
         var ferreteriala14 = {
-            usuario :'ferreteriasferreterias@outlook.es',
-            clave : 'claveodoo'
+            usuario: 'ferreteriasferreterias@outlook.es',
+            clave: 'claveodoo'
         }
-      
-        sessionStorage.setItem("ferreteriala14", JSON.stringify(ferreteriala14));
-        //sessionStorage.setItem("usuario1", JSON.stringify(usuario2));
-       // user = JSON.parse(sessionStorage.getItem("usuario"));
-    </script>
-</body>
 
-</html>
+        sessionStorage.setItem("ferreteriala14", JSON.stringify(ferreteriala14));
+    </script>

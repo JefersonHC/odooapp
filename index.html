@@ -9,9 +9,9 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
-    <!--<link rel="stylesheet" type="text/css" href="https://node-web.odoo.com/im_livechat/external_lib.css" />-->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script> var vue = null; </script>
 </head>
 
 <body>
@@ -19,7 +19,7 @@
         <ion-header>
             <ion-toolbar color="secondary">
                 <ion-buttons slot="start">
-                    <ion-button>
+                    <ion-button id="home">
                         <ion-icon name="logo-ionic"></ion-icon>
                     </ion-button>
                 </ion-buttons>
@@ -49,7 +49,14 @@
 
             </ion-grid>
         </ion-content>
-
+        <ion-footer class="ion-no-border">
+          
+          
+            <ion-footer>
+                <ion-toolbar>
+                  <ion-title>Node Web</ion-title>
+                </ion-toolbar>
+              </ion-footer>
         <!--.T-->
 
     </ion-app>
@@ -68,8 +75,14 @@
         }
 
         const btnHelp = document.querySelector('#btnHelp');
+        const home = document.querySelector('#home');
+        home.onclick = () => {
+            $("#contenedorPrincipal").load("default.html");
+            /*window.location = "ayuda.html";*/
+        }
         btnHelp.onclick = () => {
-            window.location = "ayuda.html";
+            $("#contenedorPrincipal").load("help.html");
+            /*window.location = "ayuda.html";*/
         }
     </script>
 

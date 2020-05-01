@@ -1,5 +1,6 @@
 <ion-button expand="block" color="light" id="btnSoporteBasico">Soporte</ion-button>
 <ion-button expand="block" color="light" id="btnSoporteEspecializado">Especializado</ion-button>
+<ion-button expand="block" color="danger" id="btnLogout">Salir</ion-button>
 <script>
 
     document.querySelector('#btnSoporteBasico').onclick=()=>{
@@ -8,5 +9,7 @@
     document.querySelector('#btnSoporteEspecializado').onclick=()=>{
         $("#contenedorPrincipal").load("especializado.html");
     }
- 
+    document.querySelector('#btnLogout').onclick=()=>{
+        $("#contenedorPrincipal").load("login.html");
+    }
 </script>
