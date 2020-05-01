@@ -28,7 +28,7 @@
 </ion-item>
 <ion-row>
     <ion-col size-md="2" offset-md="0">
-        <ion-button color="secondary" id="btn_enviar">
+        <ion-button  @click="regresar" color="secondary" id="btn_enviar">
             <ion-icon name="send-outline"></ion-icon>
             Enviar
         </ion-button>
@@ -40,27 +40,23 @@
         </ion-button>
     </ion-col>
 </ion-row>
+
 <ion-button expand="block" color="warning" id="btnRegresarSoporte">
     <ion-icon name="arrow-back-outline"></ion-icon>
     Regresar
 </ion-button>
-
 <script>
-    document.querySelector('#btn_enviar').onclick=()=>{
+   /* document.querySelector('#btn_enviar').onclick=()=>{
         console.log('------------enviar----------');
         enviar();
-    }
+    }*/
     document.querySelector('#btn_cancelar').onclick=()=>{
         cancelar();
     }
 
-    document.querySelector('#btnRegresarSoporte').onclick=()=>{
-        regresar();
-    }
-    function regresar(){
+   document.querySelector('#btnRegresarSoporte').onclick=()=>{
         $("#contenedorPrincipal").load("default.html");
     }
-
     function cancelar(){
         document.querySelector('#nombre').value = '';
         document.querySelector('#correo').value = '';
