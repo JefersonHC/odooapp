@@ -54,7 +54,8 @@
           
             <ion-footer>
                 <ion-toolbar>
-                  <ion-title>Node Web</ion-title>
+                  <ion-title id="particles">Node Web</ion-title>
+                 
                 </ion-toolbar>
               </ion-footer>
         <!--.T-->
@@ -76,13 +77,15 @@
 
         const btnHelp = document.querySelector('#btnHelp');
         const home = document.querySelector('#home');
+        const particles = document.querySelector('#particles');
         home.onclick = () => {
             $("#contenedorPrincipal").load("default.html");
-            /*window.location = "ayuda.html";*/
         }
         btnHelp.onclick = () => {
             $("#contenedorPrincipal").load("help.html");
-            /*window.location = "ayuda.html";*/
+        }
+        particles.onclick = () => {
+            $("#contenedorPrincipal").load("particles.html");
         }
     </script>
 
